@@ -29,4 +29,9 @@ function setRandomGif(){
 function setGif(gifFilename){
     document.body.style.background = "url('images/" + gifFilename + "') no-repeat center center fixed";
     document.body.style.backgroundSize = "cover";
+    playWhistle();
+}
+
+function playWhistle(){
+    document.getElementById("whistlePlayer").play();
 }
