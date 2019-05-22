@@ -5,12 +5,20 @@ function addDialerEvents(){
     dialerButtons.forEach(function(eachButton){
         eachButton.addEventListener("click", function(){
             var gif = eachButton.getAttribute("gif");
+            var sound = eachButton.getAttribute("sound");
             if(gif == null){
                 setRandomGif();
             }
             else{
                 setGif(gif);
             }
+            if(sound == null){
+                playWhistle("thomas_whistle.wav");
+            }
+            else{
+                playWhistle(sound);
+            }
+            
             
         });
     });
@@ -29,9 +37,11 @@ function setRandomGif(){
 function setGif(gifFilename){
     document.body.style.background = "url('images/" + gifFilename + "') no-repeat center center fixed";
     document.body.style.backgroundSize = "cover";
-    playWhistle();
+    
 }
 
-function playWhistle(){
-    document.getElementById("whistlePlayer").play();
+function playWhistle(soundFile){
+    var player = document.getElementById("whistlePlayer");
+    player.setAttribute("src", soundFile);
+    player.play();
 }
